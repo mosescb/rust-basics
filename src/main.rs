@@ -23,7 +23,7 @@ fn mutable_vs_immutable() {
 }
 
 /*
- * Data types
+ * Basic data types
  *
  */
 fn basic_datatypes() {
@@ -47,6 +47,48 @@ fn basic_datatypes() {
 }
 
 /*
+ * Compound data types
+ *
+ *   -- Array : All elements should be of same data type
+ *   -- Tuple : Elements can be of different data types
+ *
+ */
+fn compound_datatypes() {
+    // Integer Array
+    let mut arr_u32_integers :[u32; 5];  // Array of 5 integers of type u32
+    arr_u32_integers = [0;5];  // Initialize  5 integers with 0
+    arr_u32_integers[4] = 7;
+    let arr_len :usize = arr_u32_integers.len();
+    println!("Length of array, arr_u32_integers = {}", arr_len);
+    println!("arr_u32_integers[0] = {}", arr_u32_integers[0]);
+    println!("arr_u32_integers[4] = {}\n", arr_u32_integers[arr_len - 1]);
+
+    // 2d Array
+    let mut arr_2d_u8_integers :[[u8; 10]; 5];  // 5 araays of 10 integers each
+    arr_2d_u8_integers = [[0; 10]; 5];  // Initialize all positions with 0
+    arr_2d_u8_integers[1][9] = 12;
+    let arr_2d_len_ext = arr_2d_u8_integers.len();
+    let arr_2d_len_int = arr_2d_u8_integers[0].len();
+    println!("Length of external 2d array, arr_2d_u8_integers    = {}", arr_2d_len_ext);
+    println!("Length of internal 2d array, arr_2d_u8_integers[0] = {}", arr_2d_len_int);
+    println!("arr_2d_u8_integers[0][0] = {}", arr_2d_u8_integers[0][0]);
+    println!("arr_2d_u8_integers[1][9] = {}\n", arr_2d_u8_integers[1][9]);
+
+    // Tuple
+    let mut tuple_data = ('M', 8053, '\u{221E}', 9.8);
+    println!("tuple_data.0 = {}\ntuple_data.1 = {}", tuple_data.0, tuple_data.1);
+    println!("tuple_data.2 = {}\ntuple_data.3 = {}", tuple_data.2, tuple_data.3);
+    tuple_data.1 += 947;
+    tuple_data.0 = 'C';
+    println!("Modified tuple_data.0 = {}\nModified tuple_data.1 = {}\n", tuple_data.0, tuple_data.1);
+
+    let (data0, data1, data2, data3) = tuple_data;
+    println!("Split tuple into individual variables");
+    println!("data0 = {}\ndata1 = {}", data0, data1);
+    println!("data2 = {}\ndata3 = {}\n", data2, data3);
+}
+
+/*
  * Casting of data types & println!() formatting data
  *
  */
@@ -65,7 +107,7 @@ fn cast_and_format() {
 }
 
 /*
- * bitwise operations
+ * Bitwise operations
  *
  */
 fn bitwise_ops() {
@@ -115,13 +157,16 @@ fn main() {
     // Mutable vs Immutable
     mutable_vs_immutable();
 
-    // Data types
+    // Basic data types
     basic_datatypes();
+
+    // Compound data types
+    compound_datatypes();
 
     // Casting of data types & println!() formatting data
     cast_and_format();
 
-    // bitwise data representation
+    // Bitwise data representation
     bitwise_ops();
 
     // Calculate average of 4 numbers of different data types
