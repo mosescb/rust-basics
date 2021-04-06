@@ -8,6 +8,43 @@
  */
 
 
+fn main() {
+    // Mutable vs Immutable
+    mutable_vs_immutable();
+
+    // Basic data types
+    basic_datatypes();
+
+    // Compound data types
+    compound_datatypes();
+
+    // Casting of data types & println!() formatting data
+    cast_and_format();
+
+    // Bitwise data representation
+    bitwise_ops();
+
+    // Calculate average of 4 numbers of different data types
+    calc_average();
+
+    // Factorial by using iteration
+    let u32_num :u32 = 10;
+    let u64_factorial :u64 = factorial_iter(u32_num);
+    println!("Factorial of {} = {}\n", u32_num, u64_factorial);
+
+    // Addition of 3 bits
+    println!("{:0b}+{:0b}+{:0b} = {:?}", 0,0,1, add_3_bits_bool(false, false, true));
+    println!("{:0b}+{:0b}+{:0b} = {:?}\n", 1,0,1, add_3_bits_u8(1, 0, 1));
+
+    // Temperature conversion
+    let temp_in_celcius :f32 = 10.0;
+    let temp_in_fahrenheit = celcius_to_fahrenheit(temp_in_celcius);
+    println!("Temp in C: {}\tTemp in F: {}\n", temp_in_celcius, temp_in_fahrenheit);
+
+    // Calculate minimum, maximum, average from an array of integers
+    calc_min_max_avg();
+}
+
  /*
  * Mutable vs Immutable
  *
@@ -152,44 +189,6 @@ fn calc_average() {
     assert_eq!(f64_avg, 50.0);
     println!("Test Passed: Averare computed = {}\n", f64_avg);
 }
-
-fn main() {
-    // Mutable vs Immutable
-    mutable_vs_immutable();
-
-    // Basic data types
-    basic_datatypes();
-
-    // Compound data types
-    compound_datatypes();
-
-    // Casting of data types & println!() formatting data
-    cast_and_format();
-
-    // Bitwise data representation
-    bitwise_ops();
-
-    // Calculate average of 4 numbers of different data types
-    calc_average();
-
-    // Factorial by using iteration
-    let u32_num :u32 = 10;
-    let u64_factorial :u64 = factorial_iter(u32_num);
-    println!("Factorial of {} = {}\n", u32_num, u64_factorial);
-
-    // Addition of 3 bits
-    println!("{:0b}+{:0b}+{:0b} = {:?}", 0,0,1, add_3_bits_bool(false, false, true));
-    println!("{:0b}+{:0b}+{:0b} = {:?}\n", 1,0,1, add_3_bits_u8(1, 0, 1));
-
-    // Temperature conversion
-    let temp_in_celcius :f32 = 10.0;
-    let temp_in_fahrenheit = celcius_to_fahrenheit(temp_in_celcius);
-    println!("Temp in C: {}\tTemp in F: {}\n", temp_in_celcius, temp_in_fahrenheit);
-
-    // Calculate minimum, maximum, average from an array of integers
-    calc_min_max_avg();
-}
-
 
 /*
  * Factorial by using iteration
