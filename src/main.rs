@@ -171,4 +171,104 @@ fn main() {
 
     // Calculate average of 4 numbers of different data types
     calc_average();
+
+    // Factorial by using iteration
+    let u32_num :u32 = 10;
+    let u64_factorial :u64 = factorial_iter(u32_num);
+    println!("Factorial of {} = {}\n", u32_num, u64_factorial);
+
+    // Addition of 3 bits
+    println!("{:0b}+{:0b}+{:0b} = {:?}", 0,0,1, add_3_bits_bool(false, false, true));
+    println!("{:0b}+{:0b}+{:0b} = {:?}\n", 1,0,1, add_3_bits_u8(1, 0, 1));
+
+    // Temperature conversion
+    let temp_in_celcius :f32 = 10.0;
+    let temp_in_fahrenheit = celcius_to_fahrenheit(temp_in_celcius);
+    println!("Temp in C: {}\tTemp in F: {}\n", temp_in_celcius, temp_in_fahrenheit);
+}
+
+
+/*
+ * Factorial by using iteration
+ *
+ */
+fn factorial_iter(f_u32_num :u32) -> u64 {
+    if f_u32_num <= 0
+    {
+        return 0;
+    }
+
+    // f_u32_num >= 1
+    let mut u64_res :u64 = f_u32_num as u64;
+
+    for i in 1..f_u32_num as u64
+    {
+        u64_res *= i;
+    }
+
+    return u64_res;
+}
+
+/*
+ * Addition of 3 bits using bool
+ *
+ * return: (carry,sum) as boolean values
+ *
+ */
+fn add_3_bits_bool(f_bit1 :bool, f_bit2 :bool, f_bit3 :bool) -> (bool, bool) {
+    let u8_sum :u8 = f_bit1 as u8 + f_bit2 as u8 + f_bit3 as u8;
+    let mut carry_bit :bool = false;
+    let mut sum_bit :bool = false;
+
+    if u8_sum >= 2
+    {
+        carry_bit = true;
+    }
+
+    if 1 == (u8_sum % 2)
+    {
+        sum_bit = true;
+    }
+
+    return (carry_bit,sum_bit);
+}
+
+/*
+ * Addition of 3 bits using u8
+ *
+ * return: (carry,sum) as u8 values
+ *
+ */
+fn add_3_bits_u8(f_bit1 :u8, f_bit2 :u8, f_bit3 :u8) -> (u8, u8) {
+    let u8_sum :u8 = f_bit1 + f_bit2 + f_bit3;
+
+    if u8_sum > 3
+    {
+        panic!("Invalid Parameters");
+    }
+
+    let mut carry_bit :u8 = 0;
+    let mut sum_bit :u8 = 0;
+
+    if u8_sum >= 2
+    {
+        carry_bit = 1;
+    }
+
+    if 1 == (u8_sum % 2)
+    {
+        sum_bit = 1;
+    }
+
+    (carry_bit,sum_bit)  // Can be retured like this if it's a last statement
+}
+
+/*
+ * Temperature conversion from celcius to fahrenheit
+ *
+ * return: temperature in fahrenheit
+ *
+ */
+fn celcius_to_fahrenheit(f_f32_temp_in_celcius :f32) -> f32 {
+    return (1.8 * f_f32_temp_in_celcius) + 32.0;
 }
