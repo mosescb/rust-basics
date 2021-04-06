@@ -185,6 +185,9 @@ fn main() {
     let temp_in_celcius :f32 = 10.0;
     let temp_in_fahrenheit = celcius_to_fahrenheit(temp_in_celcius);
     println!("Temp in C: {}\tTemp in F: {}\n", temp_in_celcius, temp_in_fahrenheit);
+
+    // Calculate minimum, maximum, average from an array of integers
+    calc_min_max_avg();
 }
 
 
@@ -271,4 +274,45 @@ fn add_3_bits_u8(f_bit1 :u8, f_bit2 :u8, f_bit3 :u8) -> (u8, u8) {
  */
 fn celcius_to_fahrenheit(f_f32_temp_in_celcius :f32) -> f32 {
     return (1.8 * f_f32_temp_in_celcius) + 32.0;
+}
+
+/*
+ * Calculate minimum, maximum, average from an array of integers
+ *
+ */
+fn calc_min_max_avg() {
+    let i32_arr_integers = [1,2,3,0,32,94,-34,-19,290,-29,-489,899,8,0,1];
+    let mut i32_min :i32 = i32_arr_integers[0];
+    let mut i32_max :i32 = i32_arr_integers[0];
+    let mut f32_avg :f32;
+    let mut f32_sum :f32 = 0.0;
+    println!("Method1");
+    for i in 0..i32_arr_integers.len() {
+        if i32_arr_integers[i] < i32_min {
+            i32_min = i32_arr_integers[i];
+        }
+        if i32_arr_integers[i] > i32_max {
+            i32_max = i32_arr_integers[i];
+        }
+
+        f32_sum += i32_arr_integers[i] as f32;
+    }
+    f32_avg = f32_sum / i32_arr_integers.len() as f32;
+    println!("MIN= {}\t MAX= {}\t AVG= {}\n", i32_min, i32_max, f32_avg);
+
+    println!("Method2");
+    f32_avg = 0.0;
+    for &j in i32_arr_integers.iter() {
+        if j < i32_min {
+            i32_min = j;
+        }
+        if j > i32_max {
+            i32_max = j;
+        }
+
+        f32_avg += j as f32;
+    }
+
+    f32_avg = f32_avg / i32_arr_integers.len() as f32;
+    println!("MIN= {}\t MAX= {}\t AVG= {}\n", i32_min, i32_max, f32_avg);
 }
